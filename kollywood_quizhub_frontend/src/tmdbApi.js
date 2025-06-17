@@ -9,10 +9,27 @@
 
 // PUBLIC_INTERFACE
 /**
- * Get the TMDb API key from environment variables (safe method for create-react-app)
+ * Get the TMDb API key using Create React App conventions,
+ * with a runtime check for 'process' presence to safely support all environments.
  * IMPORTANT: When running locally, set REACT_APP_TMDB_API_KEY=xxxx in your .env file (do not commit .env!)
  */
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+let API_KEY = undefined;
+// Run-time check so we don't break if 'process' is undefined in the build or preview
+if (
+  typeof process !== "undefined" &&
+  process.env &&
+  typeof process.env.REACT_APP_TMDB_API_KEY !== "undefined"
+) {
+  API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+} else if (
+  typeof import.meta !== "undefined" &&
+  import.meta.env &&
+  typeof import.meta.env.REACT_APP_TMDB_API_KEY !== "undefined"
+) {
+  // (for Vite-style projects, for robustness; will fallback to undefined for others)
+  API_KEY = import.meta.env.REACT_APP_TMDB_API_KEY;
+}
+// Fallback warning or stub: You can optionally set API_KEY = "" for local/demo if not present
 
 // Base REST API URL for TMDb (v3)
 const API_BASE = "https://api.themoviedb.org/3";
