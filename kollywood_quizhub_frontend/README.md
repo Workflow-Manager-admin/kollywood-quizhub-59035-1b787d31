@@ -26,7 +26,10 @@ This app integrates with [The Movie Database (TMDb)](https://www.themoviedb.org/
 1. Copy `.env.example` to `.env` in the `kollywood_quizhub_frontend` directory.
 2. Set `REACT_APP_TMDB_API_KEY=YOUR_TMDB_KEY` in your `.env` file.
    - The provided demo key for development is: `5bc67d3b06aecbd18121a3cbbc16eb59`
-   - **IMPORTANT:** Environment variables in Create React App must be prefixed with `REACT_APP_` (e.g., `REACT_APP_TMDB_API_KEY`) and will only be available in JavaScript code after rebuilding the app (they are injected at build time). If you run into runtime errors due to `process` or `process.env` not being defined, make sure you have named the variable correctly in your `.env`, and restarted your dev server after editing `.env`.
+   - **IMPORTANT:** Environment variables in Create React App must be prefixed with `REACT_APP_` (e.g., `REACT_APP_TMDB_API_KEY`) and will only be available in JavaScript code after rebuilding the app (they are injected at build time). 
+   - Do **NOT** use `PUBLIC_URL` directly in JS — always use `process.env.PUBLIC_URL`. 
+   - For static HTML (like `public/index.html`), use `%PUBLIC_URL%` as a placeholder.
+   - If you run into runtime errors due to `process` or `process.env` not being defined, make sure you have named the variable correctly in your `.env`, and restarted your dev server after editing `.env`.
    - `tmdbApi.js` now uses a runtime guard so it will not break if `process.env` is not available (for development, preview, or alternative build setups).
    - DO NOT commit your `.env` to version control.
 
@@ -100,7 +103,10 @@ This app integrates with [The Movie Database (TMDb)](https://www.themoviedb.org/
 1. Copy `.env.example` to `.env` in the `kollywood_quizhub_frontend` directory.
 2. Set `REACT_APP_TMDB_API_KEY=YOUR_TMDB_KEY` in your `.env` file.
    - The provided demo key for development is: `5bc67d3b06aecbd18121a3cbbc16eb59`
-   - **IMPORTANT:** Environment variables in Create React App must be prefixed with `REACT_APP_` (e.g., `REACT_APP_TMDB_API_KEY`) and will only be available in JavaScript code after rebuilding the app (they are injected at build time). If you run into runtime errors due to `process` or `process.env` not being defined, make sure you have named the variable correctly in your `.env`, and restarted your dev server after editing `.env`.
+   - **IMPORTANT:** Environment variables in Create React App must be prefixed with `REACT_APP_` (e.g., `REACT_APP_TMDB_API_KEY`) and will only be available in JavaScript code after rebuilding the app (they are injected at build time). 
+   - Do **NOT** use `PUBLIC_URL` directly in JS — always use `process.env.PUBLIC_URL`. 
+   - For static HTML (like `public/index.html`), use `%PUBLIC_URL%` as a placeholder.
+   - If you run into runtime errors due to `process` or `process.env` not being defined, make sure you have named the variable correctly in your `.env`, and restarted your dev server after editing `.env`.
    - `tmdbApi.js` now uses a runtime guard so it will not break if `process.env` is not available (for development, preview, or alternative build setups).
    - DO NOT commit your `.env` to version control.
 
