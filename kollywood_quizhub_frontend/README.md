@@ -1,8 +1,93 @@
-# Lightweight React Template for KAVIA
+# Kollywood QuizHub 🎬
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+Kollywood QuizHub is a modular, client-only React SPA for conducting quizzes about Kollywood (Tamil cinema), powered by TMDb API movie/actor data.
 
 ---
+
+## 🚀 Features
+
+- **User Authentication:** Login and register (local, no backend).
+- **Quiz Interface:** Get matched on Kollywood movies and actors—questions are randomly generated from TMDb.
+- **User Progress Tracking & History:** View quiz results and history per user.
+- **Quiz Data Management:** Questions are built real-time from TMDb (no backend needed).
+- **Navigation:** SPA experience, with routing and back button.
+- **Admin Demo Panel:** See current TMDb movie/actor sample data.
+- **Session Storage:** Progress/history is stored locally (works offline).
+- **Theming:** Modern light mode, brand styling with Kollywood flavor.
+
+---
+
+## 🛠 TMDb API Integration (Kollywood QuizHub)
+
+This app integrates with [The Movie Database (TMDb)](https://www.themoviedb.org/) API to fetch Kollywood (Tamil) movie data for quizzes. The utility code is in `src/tmdbApi.js`.
+
+### 🔑 Setup your TMDb API Key
+
+1. Copy `.env.example` to `.env` in the `kollywood_quizhub_frontend` directory.
+2. Set `REACT_APP_TMDB_API_KEY=YOUR_TMDB_KEY` in your `.env` file.
+   - The provided demo key for development is: `5bc67d3b06aecbd18121a3cbbc16eb59`
+   - DO NOT commit your `.env` to version control.
+
+### Fetching Movie Data
+
+- Use the functions in `src/tmdbApi.js` for quiz data or movie lookup. Example:
+  ```js
+  import { fetchKollywoodMovies, fetchMovieDetails } from './tmdbApi';
+  // fetchKollywoodMovies().then(...)
+  // fetchMovieDetails(movieId).then(...)
+  ```
+- The API utility is reusable and supports fetching movies, movie details, searching for Tamil titles, and actors.
+
+---
+
+## 🏗️ App Structure
+
+- `src/features` - Modular feature folders: `auth/`, `quiz/`, `results/`, `user/`, `admin/`
+- `src/components` - Shared UI components (`Navbar`)
+- `src/utils` - Client-only utilities for auth, storage
+- `src/tmdbApi.js` - TMDb fetch utility
+- `.env.example` - Environment variable template for TMDb API key
+
+## 🧑‍💻 Getting Started
+
+1. Copy `.env.example` to `.env` and set your API key.
+2. Run the app:
+    ```
+    npm install
+    npm start
+    ```
+    The SPA runs at http://localhost:3000.
+
+3. Log in or register to begin playing. Each quiz and profile is fully local—no backend required.
+
+## ✏️ Customization
+
+### Colors
+
+Theme colors are defined in `src/App.css`:
+
+```css
+:root {
+  --primary-bg: #f9fafb;
+  --secondary: #f702cb;
+  --accent: #1a1814;
+  ...
+}
+```
+
+### UI
+
+The app is modular and can be extended for new quiz types or additional TMDb queries. All user state is in localStorage (per browser/user).
+
+## 📜 License & Credits
+
+Powered by [TMDb](https://www.themoviedb.org/) API.
+
+---
+
+## Learn More
+
+To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## TMDb API Integration (Kollywood QuizHub)
 
